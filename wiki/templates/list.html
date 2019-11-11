@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% for page in pages %}
+
+    <li><a href="{{ page.slug }}">{{ page.title }}</a></li>
+
+{% endfor %}
