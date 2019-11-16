@@ -1,7 +1,24 @@
+
 {% extends "base.html" %}
+       <h3></h3>
+       <p></p>
+       <p></p>
+{% block content %}
+<div class=“card-deck wiki_card”>
 
-{% for page in pages %}
+       <!-- {{ list_of_pages|length }} -->
+       {% for page in pages %}
+       <li><a href="{{ page.slug }}">{{ page.title }}</a></li>
 
-    <li><a href="{{ page.slug }}">{{ page.title }}</a></li>
-
-{% endfor %}
+       <div class="card">
+         <img src="..." class="card-img-top">
+         <div class="card-body">
+           <h5 class="card-title">{{ page.title }}</h5>
+           <p class="card-text">{{ page.content|truncatechars:100 }}</p>
+         </div>
+         <div class="card-footer">
+           <small class="text-muted"><a href="{% url 'wiki-details-page' page.slug %}">Link</a></small>
+         </div>
+       </div>
+       {% endfor %}
+{% endblock %}
